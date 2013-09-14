@@ -6,7 +6,7 @@
  * tests.
  * 
  * @see Winner-ReadMe.txt for details on how to complete this program.
- * @author insert-your-netid-here
+ * @author alding2
  * 
  */
 public class Winner {
@@ -18,8 +18,10 @@ public class Winner {
 		int c = TextIO.getlnInt();
 
 		TextIO.put("1st Place:");
-		if (a > b && a > c)
-			TextIO.putln("wow");
-		// the logic and text output need further work...
+		if (a > b && b > c)
+			TextIO.putln("a");
+		else if (b > a && a > c)
+			TextIO.putln("b");
+		else TextIO.putln("c");
 	}
 }
