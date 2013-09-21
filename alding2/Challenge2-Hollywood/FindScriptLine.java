@@ -15,7 +15,7 @@ public class FindScriptLine {
 		TextIO.putln("Searching for '" + word + "'");
 		String word2 = word.toLowerCase();
 		TextIO.readFile("thematrix.txt");
-		while ( false == TextIO.eof()) {
+		while ( TextIO.eof() == false) {
 			String line = TextIO.getln();
 			count++;
 			String line2 = line.toLowerCase();
