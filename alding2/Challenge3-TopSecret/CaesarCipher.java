@@ -28,7 +28,7 @@ public class CaesarCipher {
 			TextIO.putln("Source   :" + line);		
 			line = line.toUpperCase();		      
 			String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-			int i;                                                 // stepper for alphabet array
+			int i;                                                 // stepper for alphabet
 			int k;                                                 // stepper for line
 			String result = "";
 			for (k=0; k < line.length(); k++) {
