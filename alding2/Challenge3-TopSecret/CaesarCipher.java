@@ -31,16 +31,19 @@ public class CaesarCipher {
 			int i;                                                 // stepper for alphabet
 			int k;                                                 // stepper for line
 			String result = "";
+			int letter = 0;
 			for (k=0; k < line.length(); k++) {
-				for (i=0; i < alphabet.length(); i++) {
-					int letter = 0;
-					if (line.charAt(k) == alphabet.charAt(i)) {
-						letter = i + offset;
-						if(letter > 26 || letter < 0) letter = (letter+26)%26;
-						result = result + alphabet.charAt(letter);
+				for (i=0; line.charAt(k) != alphabet.charAt(i); i++) {
+					if (i == 25) {
+						result = result + line.charAt(k);
+						break;
 					}
 				}
-				
+				letter = i + offset;
+				if(letter > 26 || letter < 0) {
+					letter = (letter+26)%26;
+				}
+				result = result + alphabet.charAt(letter);				
 			}
 			TextIO.putln("Processed:" + result);
 			TextIO.putln("Please enter the source text (empty line to quit)");
