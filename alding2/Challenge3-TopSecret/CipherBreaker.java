@@ -15,45 +15,49 @@ public class CipherBreaker {
 		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";     // {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 		char[] digits = {'0','1','2','3','4','5','6','7','8','9'};
 		char[] punct = {'"','-','\'','.','!',','};
-		int i;
+		int i=0;
 		int j=0;
+		int k=0;
 		int countLetters = 0;
 		int countDigits = 0;
 		int countPunct = 0;
 		int countSpaces = 0;
 		char letter = ' ';
 		
-			for (i=0; i < line.length(); i++) {            // count letters
-				for (j=0; j < letters.length(); j++) {
-					if (line.charAt(i) == letters.charAt(j))
-						break;
-				}
-			letter = letters.charAt(j);
-			TextIO.putln(letter + ":" + countLetters);		
-			}
+		for (k=0; k < line.length(); k++) {						//start with first letter in line
+			for (j=0; j < letters.length(); j++) {				//look for matching letter in alphabet
+				if (line.charAt(k) == letters.charAt(j))			
+						break;                                 
+			}	
+			TextIO.put(letters.charAt(j) + ":");			
+			for (i=0; i < line.length(); i++) {					//go through rest of line looking for same letter and frequency
+				if (line.charAt(i) == line.charAt(k))
+					countLetters++;
+			}	
+			if (countLetters > 0)    TextIO.putln(countLetters);
+			countLetters = 0;
+		}
 		
-		
-		for (i=0; i < line.length(); i++) {            // count digits
+		for (i=0; i < line.length(); i++) {						// count digits
 			for (j=0; j < digits.length; j++) {
 				if (line.charAt(i) == digits[j])
 					countDigits++;
 			}
 		}
 		
-		for (i=0; i < line.length(); i++) {            // count spaces
+		for (i=0; i < line.length(); i++) {						// count spaces
 			if (line.charAt(i) == ' ')
 				countSpaces++;
 		}		
 		
-		for (i=0; i < line.length(); i++) {            // count punctuation
+		for (i=0; i < line.length(); i++) {						// count punctuation
 			for (j=0; j < punct.length; j++) {
 				if (line.charAt(i) == punct[j])
 					countPunct++;
 			}
 		}		
 		
-		if (countLetters > 0)
-			TextIO.putln(letter + ":" + countLetters);
+		
 		if (countDigits > 0)
 			TextIO.putln("DIGITS:" + countDigits);
 		if (countPunct > 0)
