@@ -24,18 +24,14 @@ public class CipherBreaker {
 		int countSpaces = 0;
 		char letter = ' ';
 		
-		for (k=0; k < line.length(); k++) {						//start with first letter in line
-			for (j=0; j < letters.length(); j++) {				//look for matching letter in alphabet
-				if (line.charAt(k) == letters.charAt(j))			
-						break;                                 
-			}	
-			TextIO.put(letters.charAt(j) + ":");			
-			for (i=0; i < line.length(); i++) {					//go through rest of line looking for same letter and frequency
-				if (line.charAt(i) == line.charAt(k))
-					countLetters++;
-			}	
-			if (countLetters > 0)    TextIO.putln(countLetters);
+		for (k=0; k < letters.length(); k++) {						//start with first letter in line
 			countLetters = 0;
+			for (j=0; j < line.length(); j++) {				//look for matching letter in alphabet
+				if (line.charAt(j) == letters.charAt(k))			
+					countLetters++;                           
+			}	
+			if (countLetters > 0)
+				TextIO.putln(letters.charAt(k) + ":" + countLetters);	
 		}
 		
 		for (i=0; i < line.length(); i++) {						// count digits
@@ -60,9 +56,10 @@ public class CipherBreaker {
 		
 		if (countDigits > 0)
 			TextIO.putln("DIGITS:" + countDigits);
-		if (countPunct > 0)
-			TextIO.putln("PUNCTUATION:" + countPunct);
 		if (countSpaces > 0)
 			TextIO.putln("SPACES:" + countSpaces);
+		if (countPunct > 0)
+			TextIO.putln("PUNCTUATION:" + countPunct);
+		
 	}	
 }
