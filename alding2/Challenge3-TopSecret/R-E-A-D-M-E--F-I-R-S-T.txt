@@ -9,8 +9,8 @@ As the Julius Caesar's lead programmer for the Roman Empire (RE) you have the fo
 The four graded java files are:
 * CaesarCipher (see instructions in CaesarCipher.txt)
 * CipherBreaker (see instructions in CipherBreaker.txt)
-* OddSum
-* MagicEightBall
+* OddSum DONE
+* MagicEightBall DONE
 
 There's also several example classes to play with.
 

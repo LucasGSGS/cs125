@@ -12,7 +12,7 @@ public class CipherBreaker {
 		String line = TextIO.getln();
 		TextIO.putln(line);
 		line = line.toUpperCase();
-		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";     // {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";    
 		char[] digits = {'0','1','2','3','4','5','6','7','8','9'};
 		char[] punct = {'"','-','\'','.','!',','};
 		int i=0;
@@ -24,9 +24,9 @@ public class CipherBreaker {
 		int countSpaces = 0;
 		char letter = ' ';
 		
-		for (k=0; k < letters.length(); k++) {						//start with first letter in line
+		for (k=0; k < letters.length(); k++) {
 			countLetters = 0;
-			for (j=0; j < line.length(); j++) {				//look for matching letter in alphabet
+			for (j=0; j < line.length(); j++) {
 				if (line.charAt(j) == letters.charAt(k))			
 					countLetters++;                           
 			}	

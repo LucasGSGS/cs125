@@ -50,7 +50,7 @@ e.g. if( isOdd ) TextIO.putln("Roll again");
  Boolean and modulus operators
   ! && || % == !=
 
-+ What out for for TextIO.getInt vs. TextIO.getlnInt()
++ Watch out for TextIO.getInt vs. TextIO.getlnInt()
 This bug will bite you! 
 See the end of the file for details
 
