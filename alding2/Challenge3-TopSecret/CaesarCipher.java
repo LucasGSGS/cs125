@@ -62,8 +62,8 @@ public class CaesarCipher {
 					offset = -k;
 					int alphNum = line.charAt(k) - 'A';
 					int afterOffset = alphNum + offset;
-					int alph = (afterOffset+26)%26 + 'A';			//change back to actual number in ascii
-					TextIO.put(alph + " ");
+					int alph = (afterOffset+130)%26 + 'A';			//change back to actual number in ascii
+					//TextIO.put(afterOffset + " ");
 					char letter = (char)alph;
 					TextIO.put(letter);
 				}
