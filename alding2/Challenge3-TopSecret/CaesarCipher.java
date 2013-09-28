@@ -25,16 +25,14 @@ public class CaesarCipher {
 		String line = TextIO.getln();			
 		
 		while(!line.equals("")) {
-			TextIO.putln("Source   :" + line);		
-			line = line.toUpperCase();		      
-			//String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			TextIO.putln("Source   :" + line);
+			line = line.toUpperCase();
 			int i=0;
 			int k=0;           
 			int j=0;
 			String result = "";
 			
 			TextIO.put("Processed:");
-			while (Math.abs(offset) != 999 && !line.equals("")) {
 			for (k=0; k < line.length(); k++) {		
 				if (line.charAt(k)>64 && line.charAt(k)<91) {
 					int alphNum = line.charAt(k) - 'A';
@@ -43,13 +41,15 @@ public class CaesarCipher {
 					char letter = (char)alph;
 					TextIO.put(letter);
 				}
-				else 											// if (line.charAt(k) < 65 || (line.charAt(k) > 90 && line.charAt(k) < 97) || line.charAt(k) > 122) 
+				else {										// if (line.charAt(k) < 65 || (line.charAt(k) > 90 && line.charAt(k) < 97) || line.charAt(k) > 122) 
 					TextIO.put(line.charAt(k));
-			}	//end for		
+				}
+			}//end for
 			TextIO.putln("\nPlease enter the source text (empty line to quit)");
-			line = TextIO.getln();
-			}
-		}	//end while
-		TextIO.putln("Bye.");
+			line = TextIO.getln();		
+			//end while
+			
+		}	//end main while
+		System.out.println("Bye.");
 	}
-}
+	}
