@@ -21,34 +21,35 @@ public class CaesarCipher {
 			TextIO.putln("Please enter the shift value (between -25..-1 and 1..25)");
 			offset = TextIO.getlnInt();
 		}		
-		TextIO.putln("Using shift value of " + offset);		
-		TextIO.putln("Please enter the source text (empty line to quit)");
-		String line = TextIO.getln();		
+		TextIO.putln("Using shift value of " + offset + "\nPlease enter the source text (empty line to quit)");
+		String line = TextIO.getln();			
+		
 		while(!line.equals("")) {
 			TextIO.putln("Source   :" + line);		
 			line = line.toUpperCase();		      
-			String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-			int i;                                                 // stepper for alphabet
-			int k;                                                 // stepper for line
+			//String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			int i=0;
+			int k=0;           
+			int j=0;
 			String result = "";
-			int letter = 0;
-			for (k=0; k < line.length(); k++) {
-				for (i=0; line.charAt(k) != alphabet.charAt(i); i++) {
-					if (i == 25) {
-						result = result + line.charAt(k);
-						break;
-					}
+			
+			TextIO.put("Processed:");
+			while (Math.abs(offset) != 999 && !line.equals("")) {
+			for (k=0; k < line.length(); k++) {		
+				if (line.charAt(k)>64 && line.charAt(k)<91) {
+					int alphNum = line.charAt(k) - 'A';
+					int afterOffset = alphNum + offset;
+					int alph = (afterOffset+26)%26 + 'A';			//change back to actual number in ascii
+					char letter = (char)alph;
+					TextIO.put(letter);
 				}
-				letter = i + offset;
-				if(letter > 26 || letter < 0) {
-					letter = (letter+26)%26;
-				}
-				result = result + alphabet.charAt(letter);				
-			}
-			TextIO.putln("Processed:" + result);
-			TextIO.putln("Please enter the source text (empty line to quit)");
+				else 											// if (line.charAt(k) < 65 || (line.charAt(k) > 90 && line.charAt(k) < 97) || line.charAt(k) > 122) 
+					TextIO.put(line.charAt(k));
+			}	//end for		
+			TextIO.putln("\nPlease enter the source text (empty line to quit)");
 			line = TextIO.getln();
-		}
+			}
+		}	//end while
 		TextIO.putln("Bye.");
 	}
 }
