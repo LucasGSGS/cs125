@@ -16,21 +16,70 @@ public class CaesarCipher {
 		TextIO.putln("Please enter the shift value (between -25..-1 and 1..25)");
 		offset = TextIO.getlnInt();	
 		
-		while (offset <= -26 || offset == 0 || offset >= 26) {
+		while (Math.abs(offset) != 999 && (offset <= -26 || offset == 0 || offset >= 26)) {
 			TextIO.putln(offset + " is not a valid shift value.");
 			TextIO.putln("Please enter the shift value (between -25..-1 and 1..25)");
 			offset = TextIO.getlnInt();
 		}		
-		TextIO.putln("Using shift value of " + offset + "\nPlease enter the source text (empty line to quit)");
+		if(Math.abs(offset) == 999) {
+			TextIO.putln("Using position shift");
+			TextIO.putln("Please enter the source text (empty line to quit)");
+		}
+		else 
+			TextIO.putln("Using shift value of " + offset + "\nPlease enter the source text (empty line to quit)");
 		String line = TextIO.getln();			
+		int k=0;
 		
-		while(!line.equals("")) {
+		while(offset == 999) {										//testPositionShift
 			TextIO.putln("Source   :" + line);
-			line = line.toUpperCase();
-			int i=0;
-			int k=0;           
-			int j=0;
-			String result = "";
+			line = line.toUpperCase();			
+			TextIO.put("Processed:");
+			for (k=0; k < line.length(); k++) {
+				if (line.charAt(k)>64 && line.charAt(k)<91) {
+					offset = k;
+					int alphNum = line.charAt(k) - 'A';
+					int afterOffset = alphNum + offset;
+					int alph = (afterOffset+26)%26 + 'A';			//change back to actual number in ascii
+					char letter = (char)alph;
+					TextIO.put(letter);
+				}
+				else {
+					TextIO.put(line.charAt(k));
+				}
+			}//end for
+			TextIO.putln("\nPlease enter the source text (empty line to quit)");
+			line = TextIO.getln();		
+			//end while
+			
+		}	//end main while
+		
+		while(offset == -999) {										//testDecodePositionShift
+			TextIO.putln("Source   :" + line);
+			line = line.toUpperCase();			
+			TextIO.put("Processed:");
+			for (k=0; k < line.length(); k++) {
+				if (line.charAt(k)>64 && line.charAt(k)<91) {
+					offset = -k;
+					int alphNum = line.charAt(k) - 'A';
+					int afterOffset = alphNum + offset;
+					int alph = (afterOffset+26)%26 + 'A';			//change back to actual number in ascii
+					TextIO.put(alph + " ");
+					char letter = (char)alph;
+					TextIO.put(letter);
+				}
+				else {
+					TextIO.put(line.charAt(k));
+				}
+			}//end for
+			TextIO.putln("\nPlease enter the source text (empty line to quit)");
+			line = TextIO.getln();		
+			//end while
+			
+		}	//end main while
+		
+		while(!line.equals("") && Math.abs(offset) != 999) {
+			TextIO.putln("Source   :" + line);
+			line = line.toUpperCase();         
 			
 			TextIO.put("Processed:");
 			for (k=0; k < line.length(); k++) {		
@@ -41,7 +90,7 @@ public class CaesarCipher {
 					char letter = (char)alph;
 					TextIO.put(letter);
 				}
-				else {										// if (line.charAt(k) < 65 || (line.charAt(k) > 90 && line.charAt(k) < 97) || line.charAt(k) > 122) 
+				else { 
 					TextIO.put(line.charAt(k));
 				}
 			}//end for
@@ -50,6 +99,7 @@ public class CaesarCipher {
 			//end while
 			
 		}	//end main while
+		
 		System.out.println("Bye.");
 	}
 	}
