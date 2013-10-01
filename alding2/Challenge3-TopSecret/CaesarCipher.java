@@ -37,10 +37,8 @@ public class CaesarCipher {
 			for (k=0; k < line.length(); k++) {
 				if (line.charAt(k)>64 && line.charAt(k)<91) {
 					offset = k;
-					int alphNum = line.charAt(k) - 'A';
-					int afterOffset = alphNum + offset;
-					int alph = (afterOffset+26)%26 + 'A';			//change back to actual number in ascii
-					char letter = (char)alph;
+					char letter = line.charAt(k);
+					letter = (char)((letter - 'A' + offset + 26)%26 + 'A');
 					TextIO.put(letter);
 				}
 				else {
@@ -60,11 +58,8 @@ public class CaesarCipher {
 			for (k=0; k < line.length(); k++) {
 				if (line.charAt(k)>64 && line.charAt(k)<91) {
 					offset = -k;
-					int alphNum = line.charAt(k) - 'A';
-					int afterOffset = alphNum + offset;
-					int alph = (afterOffset+130)%26 + 'A';			//change back to actual number in ascii
-					//TextIO.put(afterOffset + " ");
-					char letter = (char)alph;
+					char letter = line.charAt(k);
+					letter = (char)((letter - 'A' + offset + 130)%26 + 'A');
 					TextIO.put(letter);
 				}
 				else {
@@ -84,10 +79,8 @@ public class CaesarCipher {
 			TextIO.put("Processed:");
 			for (k=0; k < line.length(); k++) {		
 				if (line.charAt(k)>64 && line.charAt(k)<91) {
-					int alphNum = line.charAt(k) - 'A';
-					int afterOffset = alphNum + offset;
-					int alph = (afterOffset+26)%26 + 'A';			//change back to actual number in ascii
-					char letter = (char)alph;
+					char letter = line.charAt(k);
+					letter = (char)((letter - 'A' + offset + 26)%26 + 'A');
 					TextIO.put(letter);
 				}
 				else { 
