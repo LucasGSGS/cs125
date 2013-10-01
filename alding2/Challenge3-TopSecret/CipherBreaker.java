@@ -23,7 +23,7 @@ public class CipherBreaker {
 		int countPunct = 0;
 		int countSpaces = 0;
 		
-		for (k=0; k < letters.length(); k++) {					// count individual letters
+		for (k=0; k < letters.length(); k++) {			// count individual letters
 			countLetters = 0;
 			for (j=0; j < line.length(); j++) {
 				if (line.charAt(j) == letters.charAt(k))			
@@ -33,14 +33,14 @@ public class CipherBreaker {
 				TextIO.putln(letters.charAt(k) + ":" + countLetters);	
 		}
 		
-		for (i=0; i < line.length(); i++) {						// count digits
-			for (j=0; j < digits.length; j++) {
+		for (i=0; i < line.length(); i++) {
+			for (j=0; j < digits.length; j++) {			// count digits
 				if (line.charAt(i) == digits[j])
 					countDigits++;
 			}
-			if (line.charAt(i) == ' ')
+			if (line.charAt(i) == ' ')					// count spaces
 				countSpaces++;
-			for (j=0; j < punct.length; j++) {
+			for (j=0; j < punct.length; j++) {			// count punctuation
 				if (line.charAt(i) == punct[j])
 					countPunct++;
 			}
