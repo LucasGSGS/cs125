@@ -22,9 +22,8 @@ public class CipherBreaker {
 		int countDigits = 0;
 		int countPunct = 0;
 		int countSpaces = 0;
-		char letter = ' ';
 		
-		for (k=0; k < letters.length(); k++) {
+		for (k=0; k < letters.length(); k++) {					// count individual letters
 			countLetters = 0;
 			for (j=0; j < line.length(); j++) {
 				if (line.charAt(j) == letters.charAt(k))			
@@ -39,21 +38,14 @@ public class CipherBreaker {
 				if (line.charAt(i) == digits[j])
 					countDigits++;
 			}
-		}
-		
-		for (i=0; i < line.length(); i++) {						// count spaces
 			if (line.charAt(i) == ' ')
 				countSpaces++;
-		}		
-		
-		for (i=0; i < line.length(); i++) {						// count punctuation
 			for (j=0; j < punct.length; j++) {
 				if (line.charAt(i) == punct[j])
 					countPunct++;
 			}
 		}		
-		
-		
+				
 		if (countDigits > 0)
 			TextIO.putln("DIGITS:" + countDigits);
 		if (countSpaces > 0)
