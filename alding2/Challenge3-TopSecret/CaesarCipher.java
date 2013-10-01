@@ -41,9 +41,8 @@ public class CaesarCipher {
 					letter = (char)((letter - 'A' + offset + 26)%26 + 'A');
 					TextIO.put(letter);
 				}
-				else {
+				else
 					TextIO.put(line.charAt(k));
-				}
 			}//end for
 			TextIO.putln("\nPlease enter the source text (empty line to quit)");
 			line = TextIO.getln();		
@@ -62,9 +61,8 @@ public class CaesarCipher {
 					letter = (char)((letter - 'A' + offset + 130)%26 + 'A');
 					TextIO.put(letter);
 				}
-				else {
+				else
 					TextIO.put(line.charAt(k));
-				}
 			}//end for
 			TextIO.putln("\nPlease enter the source text (empty line to quit)");
 			line = TextIO.getln();		
@@ -83,10 +81,9 @@ public class CaesarCipher {
 					letter = (char)((letter - 'A' + offset + 26)%26 + 'A');
 					TextIO.put(letter);
 				}
-				else { 
+				else 
 					TextIO.put(line.charAt(k));
-				}
-			}//end for
+			}
 			TextIO.putln("\nPlease enter the source text (empty line to quit)");
 			line = TextIO.getln();					
 		}
