@@ -17,20 +17,19 @@ public class CipherBreaker {
 		char[] punct = {'"','-','\'','.','!',','};
 		int i=0;
 		int j=0;
-		int k=0;
 		int countLetters = 0;
 		int countDigits = 0;
 		int countPunct = 0;
 		int countSpaces = 0;
 		
-		for (k=0; k < letters.length(); k++) {			// count individual letters
+		for (i=0; i < letters.length(); i++) {			// count individual letters
 			countLetters = 0;
 			for (j=0; j < line.length(); j++) {
-				if (line.charAt(j) == letters.charAt(k))			
+				if (line.charAt(j) == letters.charAt(i))			
 					countLetters++;                           
 			}	
 			if (countLetters > 0)
-				TextIO.putln(letters.charAt(k) + ":" + countLetters);	
+				TextIO.putln(letters.charAt(i) + ":" + countLetters);	
 		}
 		
 		for (i=0; i < line.length(); i++) {
