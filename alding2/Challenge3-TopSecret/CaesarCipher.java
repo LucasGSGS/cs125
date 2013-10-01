@@ -49,7 +49,7 @@ public class CaesarCipher {
 			line = TextIO.getln();		
 			//end while
 			
-		}	//end main while
+		}
 		
 		while(offset == -999) {										//testDecodePositionShift
 			TextIO.putln("Source   :" + line);
@@ -72,7 +72,7 @@ public class CaesarCipher {
 			
 		}	//end main while
 		
-		while(!line.equals("") && Math.abs(offset) != 999) {
+		while(!line.equals("") && Math.abs(offset) != 999) {			//normal tests
 			TextIO.putln("Source   :" + line);
 			line = line.toUpperCase();         
 			
@@ -88,10 +88,8 @@ public class CaesarCipher {
 				}
 			}//end for
 			TextIO.putln("\nPlease enter the source text (empty line to quit)");
-			line = TextIO.getln();		
-			//end while
-			
-		}	//end main while
+			line = TextIO.getln();					
+		}
 		
 		System.out.println("Bye.");
 	}
