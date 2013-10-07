@@ -91,7 +91,7 @@ public class RainGame {
 			}
 			
 			
-			if (count>=10) {
+			if (count>=20) {
 				level++;
 				count=0;						
 			}
