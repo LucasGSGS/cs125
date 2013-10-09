@@ -47,10 +47,6 @@ public class PixelEffects {
 		// you should be reading half way across the original image too.
 	}
 
-	/**
-	 * Half the size of the image. This method should be just one line! Just
-	 * delegate the work to resize()!
-	 */
 	public static int[][] half(int[][] source) {									//testHalf
 		return resize(source, source.length/2, source[0].length/2);
 	}
@@ -109,7 +105,7 @@ public class PixelEffects {
 		for(int tgtX = 0; tgtX < tgtW; tgtX++) {
 			for(int tgtY = 0; tgtY < tgtH; tgtY++) {
 				int srcY = tgtX;
-				int srcX = tgtH - tgtY - 1;
+				int srcX = tgtH - 1 - tgtY;
 				rotated[tgtX][tgtY] = source[srcX][srcY]; 
 			}
 		}
@@ -117,13 +113,28 @@ public class PixelEffects {
 	}
 
 	/** Merge the red,blue,green components from two images */
-	public static int[][] merge(int[][] sourceA, int[][] sourceB) {
-		
-		// The output should be the same size as the input. Scale (x,y) values
-		// when reading the background
-		// (e.g. so the far right pixel of the source is merged with the
-		// far-right pixel ofthe background).
-		return sourceA;
+	public static int[][] merge(int[][] sourceA, int[][] sourceB) {					// testMerge
+		int[][] result = new int[sourceB.length][sourceB[0].length];
+		sourceA = resize(sourceA, sourceB);
+		int redA, greenA, blueA;
+		int redB, greenB, blueB;
+		int avgRed, avgGreen, avgBlue, avgRGB;
+		for (int a = 0; a < sourceA.length; a++) {
+			for (int b = 0; b < sourceA[0].length; b++) {
+				redA = RGBUtilities.toRed(sourceA[a][b]);
+				redB = RGBUtilities.toRed(sourceB[a][b]);
+				avgRed = (int)(redA + redB)/2;
+				greenA = RGBUtilities.toGreen(sourceA[a][b]);
+				greenB = RGBUtilities.toGreen(sourceB[a][b]);
+				avgGreen = (int)(greenA + greenB)/2;
+				blueA = RGBUtilities.toBlue(sourceA[a][b]);
+				blueB = RGBUtilities.toBlue(sourceB[a][b]);
+				avgBlue = (int)(blueA + blueB)/2;				
+				avgRGB = RGBUtilities.toRGB(avgRed,avgGreen,avgBlue);
+				result[a][b] = avgRGB;
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -131,16 +142,28 @@ public class PixelEffects {
 	 * image
 	 */
 	public static int[][] chromaKey(int[][] foreImage, int[][] backImage) {
+		int[][] newForeImage = resize(foreImage,backImage);
+		int width = backImage.length;
+		int height = backImage[0].length;
+		int[][] result = new int[width][height];
+		int greenAmount;
+		for(int w = 0; w < width; w++) {
+			for(int h = 0; h < height; h++) {
+				greenAmount = RGBUtilities.toGreen(foreImage[w][h]);
+				if (greenAmount > 50) result[w][h] = backImage[w][h];
+				else result[w][h] = newForeImage[w][h];
+			}
+		}
+		return result;
 		// If the image has a different size than the background use the
 		// resize() method
-		// create an image the same as the background size.
-		return foreImage;
+		// create an image the same as the background size.		
 	}
 
 	/** Removes "redeye" caused by a camera flash. sourceB is not used */
 	public static int[][] redeye(int[][] source, int[][] sourceB) {
-
-		int width = source.length, height = source[0].length;
+		int width = source.length;
+		int height = source[0].length;
 		int[][] result = new int[width][height];
 		for (int i = 0; i < width; i++)
 			for (int j = 0; j < height; j++) {
@@ -152,7 +175,6 @@ public class PixelEffects {
 					red = green = blue = 0;
 				result[i][j] = RGBUtilities.toRGB(red, green, blue);
 			}
-
 		return result;
 	}
 
