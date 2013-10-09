@@ -19,15 +19,15 @@ public class RGBUtilities {
  * @return the red component (0..255)
  */
 	public static int toRed(int rgb) {
-		return (rgb >> 16) & 0xFF; // FIX ME
+		return (rgb >> 16) & 0xFF;
 	}
 
 	public static int toGreen(int rgb) {
-		return (rgb >> 8) & 0xFF; // FIX THIS
+		return (rgb >> 8) & 0xFF;
 	}
 
 	public static int toBlue(int rgb) {
-		return rgb & 0xFF; // FIX THIS
+		return rgb & 0xFF;
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class RGBUtilities {
 	 * @return a single integer representation the rgb color (8 bits per component) rrggbb
 	 */
 	static int toRGB(int r, int g, int b) {
-		return (r << 16) | (g << 8) | b; // FIX THIS
+		return (r << 16) | (g << 8) | b;
 	}
 
 }
