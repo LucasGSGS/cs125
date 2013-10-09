@@ -12,7 +12,7 @@ public class RainGame {
 		// Do not put your name or your UIN. 
 		// REMEMBER TO COMMIT this file...
 		int count=0;
-		int x=0, y=0, dx=0, dy=0, score = 0;
+		int x=100, y=0, dx=0, dy=0, score = 0;
 		int z=100;
 		int w=100;
 		int dw=5;
@@ -20,18 +20,31 @@ public class RainGame {
 		String text = "";
 		long startTime =System.currentTimeMillis();
 		long elapsed=0;
+		int r=200;
+		int g=300;
+		int b=200;
 		
 		int level=1; 
-		System.out.println("What level would you like to start at?");
 		Scanner keyboard= new Scanner(System.in);
+		while (true)
+		{
+		System.out.println("Enter a starting level between 1 and 5");
+		
 		level=keyboard.nextInt();
+		if (level>=1 && level<=5)
+			break;
+		
+		}
 		
 		
 		Zen.setFont("Helvetica-64");
 		while (Zen.isRunning()) {
 
 			if (text.length() == 0) {
-				x = 100;
+				if (x<400)
+				x +=50;
+				else
+					x=100;
 				y = Zen.getZenHeight() / 2;
 				
 				dx = 0;
@@ -42,7 +55,10 @@ public class RainGame {
 				
 				//score += 3000 / elapsed;
 			}
-			Zen.setColor(200, 300, 200);
+			r=(int)(Math.random()*300);
+			g=(int)(Math.random()*300);
+			b=(int)(Math.random()*300);
+			Zen.setColor(r, g, b);
 			
 			Zen.fillRect(0, 0, Zen.getZenWidth(), Zen.getZenHeight());
 
@@ -58,8 +74,11 @@ public class RainGame {
 			Zen.drawText("NUMBERS", z+100, 400);
 			Zen.drawText("LETTERS", 400, w+100);
 			Zen.drawText("APPLE", 100, w+40);
+			Zen.drawText("CRAZY", 50, w-35);
 			Zen.drawText("PEAR", z+50, w);
 			Zen.drawText("JAVA", z+300, w);
+			Zen.drawText("WRONG", z-250, w);
+			
 		
 			
 			//Zen.drawText("Time: " + elapsed,10,150);
@@ -82,16 +101,26 @@ public class RainGame {
 			
 			for(int i=0;i < user.length();i++) {
 				char c = user.charAt(i);
-				if(c == text.charAt(0)) {
+				//if (text.length()>0){
+				if(text.length()>0 &&c == text.charAt(0)) {
 					text = text.substring(1,text.length()); // all except first character
 					score+=100;
 					count++;
 					
-				}			
+				}
+				
+				if (text.length()>0 && c!=text.charAt(0))
+				score-=100;
+			
+				
+				
+				
+				//}
+				
 			}
 			
 			
-			if (count>=20) {
+			if (count>=10) {
 				level++;
 				count=0;						
 			}
@@ -108,5 +137,6 @@ public class RainGame {
 
 		}
 	}
+
 
 }
