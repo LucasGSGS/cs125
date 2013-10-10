@@ -121,14 +121,16 @@ public class PixelEffects {
 		int avgRed, avgGreen, avgBlue, avgRGB;
 		for (int a = 0; a < sourceA.length; a++) {
 			for (int b = 0; b < sourceA[0].length; b++) {
-				redA = RGBUtilities.toRed(sourceA[a][b]);
-				redB = RGBUtilities.toRed(sourceB[a][b]);
+				int rgbA = sourceA[a][b];
+				int rgbB = sourceB[a][b];
+				redA = RGBUtilities.toRed(rgbA);
+				redB = RGBUtilities.toRed(rgbB);
 				avgRed = (int)(redA + redB)/2;
-				greenA = RGBUtilities.toGreen(sourceA[a][b]);
-				greenB = RGBUtilities.toGreen(sourceB[a][b]);
+				greenA = RGBUtilities.toGreen(rgbA);
+				greenB = RGBUtilities.toGreen(rgbB);
 				avgGreen = (int)(greenA + greenB)/2;
-				blueA = RGBUtilities.toBlue(sourceA[a][b]);
-				blueB = RGBUtilities.toBlue(sourceB[a][b]);
+				blueA = RGBUtilities.toBlue(rgbA);
+				blueB = RGBUtilities.toBlue(rgbB);
 				avgBlue = (int)(blueA + blueB)/2;				
 				avgRGB = RGBUtilities.toRGB(avgRed,avgGreen,avgBlue);
 				result[a][b] = avgRGB;
@@ -179,12 +181,25 @@ public class PixelEffects {
 	}
 
 	/* Upto you! do something fun to the image */
-	public static int[][] funky(int[][] source, int[][] sourceB) {
+	public static int[][] funky(int[][] source, int[][] sourceB) {						// negative effect
+		int width = source.length;
+		int height = source[0].length;
+		int[][] result = new int[width][height];
+		for (int i = 0; i < width; i++)
+			for (int j = 0; j < height; j++) {
+				int rgb = source[i][j];
+				int red = RGBUtilities.toRed(rgb);
+				int green = RGBUtilities.toGreen(rgb);
+				int blue = RGBUtilities.toBlue(rgb);
+				red = 256 - red;
+				green = 256 - green;
+				blue = 256 - blue;
+				result[i][j] = RGBUtilities.toRGB(red, green, blue);
+			}
+		return result;
 		// You need to invent your own image effect
-		// Minimum boring requirements to pass autograder:
-		
+		// Minimum boring requirements to pass autograder:		
 		// Does not ask for any user input and returns a new 2D array
 		// Todo: remove this return null
-		return null;
 	}
 }
