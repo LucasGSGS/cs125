@@ -25,11 +25,11 @@ public class Effects {
 		else if (cmd.equals("redeye")) return PixelEffects.redeye(source);
 		else if (cmd.equals("funky")) return PixelEffects.funky(source,background);
 		else if (cmd.equals("resize")) return PixelEffects.resize(source,background);
-		else if (cmd.equals("copy")) return PixelEffects.copy(source);
-		else if (cmd.equals("chromaKey")) return PixelEffects.chromaKey(source,background);
 		else if (cmd.equals("merge")) return PixelEffects.merge(source,background);
-		else if(cmd.equals("hide")) return Stenography.hide(source,background);
-		else if(cmd.equals("extract")) return Stenography.extract(source);
+		else if (cmd.equals("key")) return PixelEffects.chromaKey(source,background);
+		else if (cmd.equals("copy")) return PixelEffects.copy(source);
+		else if (cmd.equals("hide")) return Stenography.hide(source,background);
+		else if (cmd.equals("extract")) return Stenography.extract(source);
 		
 		
 		// The basic form of this method is one long if-else if else if....
