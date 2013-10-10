@@ -163,7 +163,7 @@ public class PixelEffects {
 	}
 
 	/** Removes "redeye" caused by a camera flash. sourceB is not used */
-	public static int[][] redeye(int[][] source, int[][] sourceB) {
+	public static int[][] redeye(int[][] source) {
 		int width = source.length;
 		int height = source[0].length;
 		int[][] result = new int[width][height];
@@ -181,7 +181,7 @@ public class PixelEffects {
 	}
 
 	/* Upto you! do something fun to the image */
-	public static int[][] funky(int[][] source, int[][] sourceB) {						// negative effect
+	public static int[][] funky(int[][] source) {						// negative effect
 		int width = source.length;
 		int height = source[0].length;
 		int[][] result = new int[width][height];
