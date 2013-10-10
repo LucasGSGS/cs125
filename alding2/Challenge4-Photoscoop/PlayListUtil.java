@@ -14,7 +14,9 @@ public class PlayListUtil {
 	 */
 	public static void list(String[] list, int maximum) {
 		int i;
-		for ( i = 0      ; i    <=    maximum; ); {      TextIO.putln(   ""  + i + ". " + list[i]);}
+		for (i = 0; maximum == -1 || i < maximum; i++) {
+			TextIO.putln((i+1) + ". " + list[i]);
+		}
 	}
 
 	/**
@@ -24,7 +26,7 @@ public class PlayListUtil {
 	 * @param prepend if true, prepend the title otherwise append the title
 	 * @return a new list with the title prepended or appended to the original list
 	 */
-	public static String[] add(String[] list, String title, boolean prepend) {
+	public static String[] add(String[] list, String title, boolean prepend) {					// testPrepend, testAppend
 		int resultLength = list.length + 1;
 		String[] result = new String[resultLength];
 		if (prepend) {
@@ -48,7 +50,15 @@ public class PlayListUtil {
 	 * @return a new list with the String at position 'index', absent.
 	 */
 	public static String[] discard(String[] list, int index) {
-		return list;
+		String[] result = new String[list.length - 1];
+		int i;
+		for (i = 0; i <= index; i++) {
+			result[i] = list[i];
+		}
+		for (i = index + 1; i < result.length + 1; i++) {
+			result[i - 1] = list[i];
+		}
+		return result;
 	}
 
 }
