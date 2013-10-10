@@ -102,14 +102,15 @@ Each integer entry e.g. picture[25][28] is an integer representation of the colo
 
 You will need to edit the following files:
 # PixelEffects.java - the effect methods described above. This class should delegate extracting red/green/blue values to the methods inside RGBUtilities.
-
+	DONE
 # Effects.java - A simple if-else method that acts as the glue between the menus and the actual processing methods.
 Note this method should delegate all of its pixel processing work to methods inside PixelEffects.
 This method is just a large number of if-else statements that connect the menu item to each of the methods inside pixeleffects.
-
+	DONE
 # PlayListUtil.java - A set of class methods to manipulate lists.
-
+	DONE
 # RGBUtilities.java
+	DONE
 
 This class holds the methods to convert between individual red,green,blue values and single integer representation of the color.
 Each red,green or blue component can have a value between 0 (dark) and 255(fully on).
