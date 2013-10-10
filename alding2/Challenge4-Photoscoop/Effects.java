@@ -5,7 +5,7 @@
  * 
  * Todo: Put your netid (i.e. username) in the line below
  * 
- * @author put-your-netid-here
+ * @author alding2
  */
 public class Effects {
 	/**
@@ -16,7 +16,22 @@ public class Effects {
 	 * @param background - the secondary (background) image (not changed)
 	 * @return the new image or null if the command failed.
 	 */
+	/*"half", "rotate", "flip", "mirror","redeye","funky" , "resize", "merge", "key"*/
 	public static int[][] process(String cmd, int[][] source, int[][] background) {
+		if (cmd.equals("half")) return PixelEffects.half(source);
+		else if (cmd.equals("rotate")) return PixelEffects.rotateLeft(source);
+		else if (cmd.equals("flip")) return PixelEffects.flip(source);
+		else if (cmd.equals("mirror")) return PixelEffects.mirror(source);
+		else if (cmd.equals("redeye")) return PixelEffects.redeye(source);
+		else if (cmd.equals("funky")) return PixelEffects.funky(source,background);
+		else if (cmd.equals("resize")) return PixelEffects.resize(source,background);
+		else if (cmd.equals("copy")) return PixelEffects.copy(source);
+		else if (cmd.equals("chromaKey")) return PixelEffects.chromaKey(source,background);
+		else if (cmd.equals("merge")) return PixelEffects.merge(source,background);
+		else if(cmd.equals("hide")) return Stenography.hide(source,background);
+		else if(cmd.equals("extract")) return Stenography.extract(source);
+		
+		
 		// The basic form of this method is one long if-else if else if....
 		// To turn a string into a particular method call
 		
