@@ -181,7 +181,7 @@ public class PixelEffects {
 	}
 
 	/* Upto you! do something fun to the image */
-	public static int[][] funky(int[][] source) {						// negative effect
+	public static int[][] funky(int[][] source, int[][] background) {						// negative effect
 		int width = source.length;
 		int height = source[0].length;
 		int[][] result = new int[width][height];
