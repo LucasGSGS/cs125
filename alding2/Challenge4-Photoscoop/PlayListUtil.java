@@ -8,13 +8,12 @@ public class PlayListUtil {
 
 	/**
 	 * Debug ME! Use the unit tests to reverse engineer how this method should work.
-	 * Hint: Fix the formatting (shift-cmd-F) to help debug the following code
+	 * Hint: Fix the formatting (shift-ctrl-F) to help debug the following code
 	 * @param list
 	 * @param maximum
 	 */
 	public static void list(String[] list, int maximum) {
-		int i;
-		for (i = 0; maximum == -1 || i < maximum; i++) {
+		for (int i = 0; (maximum == -1 && i < list.length) || i < maximum; i++) {
 			TextIO.putln((i+1) + ". " + list[i]);
 		}
 	}
