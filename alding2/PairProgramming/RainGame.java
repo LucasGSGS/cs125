@@ -1,6 +1,7 @@
 //UIUC CS125 FALL 2013 MP. File: RainGame.java, CS125 Project: PairProgramming, Version: 2013-10-01T11:20:25-0500.635270305
 /**
  * @author panthap2,alding2
+ * @reviewed gutekun2,semerar1
  */
  import java.util.Scanner;
 
