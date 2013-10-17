@@ -54,7 +54,9 @@ public class Geocache {
 	}
 	
 	public boolean equals(Geocache b) {
-		return ;
+		if ((b instanceof Geocache) && this.x == b.x && this.y == b.y)
+			return true;
+		return false;
 	}
 	
 	public String toString() {
@@ -76,12 +78,12 @@ public class Geocache {
  * resetCount() method was called. ---------DONE
  * 
  * Create an equals method that takes an object reference and returns true if the given object equals this object.
- * Hint: You'll need 'instanceof' and cast to a (Geocache)
+ * Hint: You'll need 'instance of' and cast to a (Geocache)
  * 
  * Create a toString() method that returns a string representation of this object in the form '(x,y)' where 'x' and 'y'
  * are the current values of x,y.
  * 
- * Create the four getX/getY/setX/setY methods for x,y. ------------------DONE
+ * Create the four getX/getY/setX/setY methods for x,y. ------------DONE
  * However the setX() method will only change the Geocache's x value if the given value is between -1000 and 1000 exclusive (i.e. -1000<x<1000).
  * If the value is outside of this range, the new value is ignored and the Geocache's x value remains unchanged.
  *   
