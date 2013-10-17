@@ -28,7 +28,11 @@ public class GeocacheList {
 				data[i] = new Geocache(list.data[i].getX(),list.data[i].getY());
 			}
 		} else {														// testShallowCopy
-			
+			for (int i = 0; i < list.data.length; i++) {
+				add(list.data[i]);
+				data[i].setX(list.data[i].getX());
+				data[i].setY(list.data[i].getY());
+			}
 		}
 		size = list.getSize();
 	}
