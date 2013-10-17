@@ -18,8 +18,9 @@ public class StaticMethodsAreEasy {
 		}
 		Geocache[] cache = new Geocache[num];
 		for (int i=0; i < num; i++) {
-			cache[i].setX(Math.random()*100);
-			cache[i].setY(Math.random()*100);
+			double x = Math.random()*100;
+			double y = Math.random()*100;
+			cache[i] = new Geocache(x,y);
 		}
 		return cache;
 	}
