@@ -1,7 +1,6 @@
 //UIUC CS125 FALL 2013 MP. File: StaticMethodsAreEasy.java, CS125 Project: Challenge5-DataStructures, Version: 2013-10-14T13:45:00-0500.576972931
 public class StaticMethodsAreEasy {
-// Oh no... Someone removed  the methods but left the comments!!
-// Hint: Get the Geocache class working and passing its tests first.
+	
 
 	/**
 	 * Returns an array of num geocaches. Each geocache is initialized to a random
@@ -12,7 +11,18 @@ public class StaticMethodsAreEasy {
 	 *            number of geocaches to create
 	 * @return array of newly minted Points
 	 */
-//write the method here...
+	public static Geocache[] createGeocaches(int num) {					// testCreateGeocaches
+		if (num < 0) {
+			Geocache[] cache0 = new Geocache[0];
+			return cache0;
+		}
+		Geocache[] cache = new Geocache[num];
+		for (int i=0; i < num; i++) {
+			cache[i].setX(Math.random()*100);
+			cache[i].setY(Math.random()*100);
+		}
+		return cache;
+	}
 	
 	/**
 	 * Modifies geocaches if the geocache's X value is less than the allowable minimum
@@ -24,8 +34,24 @@ public class StaticMethodsAreEasy {
 	 *            minimum X value.
 	 * @return number of modified geocaches (i.e. x values were too small).
 	 */
-	//write the method here...
+	public static int ensureMinimumXValue(Geocache[] p, double minX) {
+		int count = 0;
+		for (int i=0; i < p.length; i++) {
+			if (p[i].getX() < minX) {
+				p[i].setX(minX);
+				count++;
+			}
+		}
+		return count;
+	}
 
+	public static int countEqual(Geocache[] p, Geocache test) {
+		int count = 0;
+		for(int i = 0; i < p.length; i++) {
+			if (p[i].equals(test)) count++;
+		}
+		return count;
+	}
 	/**
 	 * Counts the number of geocaches that are equal to the given geocache
 	 * Hint: Use geocache.equals() method 
