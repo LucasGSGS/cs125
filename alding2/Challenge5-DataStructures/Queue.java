@@ -40,10 +40,10 @@ public class Queue {
 	/** Returns a comma separated string representation of the queue. */
 	public String toString() {
 		String result = "";
-		for (int i = 0; i < this.size-1; i++) {
-			result = result + this.data[i] + ",";
+		result = result + this.data[this.size - 1];
+		for (int i = this.size - 2; i >= 0; i--) {
+			result = result + "," + this.data[i];
 		}
-		result = result + this.data[size-1];
 		return result;
 	}
 }
