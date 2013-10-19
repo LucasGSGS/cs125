@@ -9,14 +9,14 @@ IMPLEMENTATION REQUIREMENTS
 Your challenge is to implement the following eight classes 
 and become master of Stacks and Queues-
 
-Geocache.java
-GeocacheList.java
+Geocache.java XX
+GeocacheList.java XX
 KeyValueMap.java
-Queue.java
-Stack.java
-CallAStaticMethod.java
-StaticMethodsAreEasy.java
-UsingPublicFieldsIsEasy.java
+Queue.java  XX
+Stack.java XX
+CallAStaticMethod.java XX
+StaticMethodsAreEasy.java XX
+UsingPublicFieldsIsEasy.java XX
 
 - such that all of the unit tests pass and the AutomaticGrader gives you 100%.
 
@@ -28,7 +28,7 @@ ExampleDebugger, ExampleDoubleList and ExampleFileSearch classes.
 When you first check this project out, you'll see some compile errors in the package view.
 These will all need to be fixed (by creating the relevant classes and methods) to get an
 MP score greater than 1/100.
-StaticMethods and UsingPublicFields are the simplest.
+StaticMethodsAreEasy and UsingPublicFieldsIsEasy are the simplest.
 and Geocache before LabeledGeocache and GeocacheList.
 When writing each method, remember that other methods you have
 already written may simplify the task in hand.

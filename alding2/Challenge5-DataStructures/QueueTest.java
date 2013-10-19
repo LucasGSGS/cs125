@@ -21,7 +21,7 @@ public class QueueTest extends TestCase {
 		q.add(6.);
 		assertEquals(3,q.length());
 		// Remove first one added
-		assertEquals(4. ,q.remove());
+		assertEquals(4., q.remove());
 		assertEquals(5., q.remove());
 		q.add(7.);
 		assertEquals(2,q.length());

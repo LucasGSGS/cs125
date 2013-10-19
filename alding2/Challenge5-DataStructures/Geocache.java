@@ -1,4 +1,5 @@
 //UIUC CS125 FALL 2013 MP. File: Geocache.java, CS125 Project: Challenge5-DataStructures, Version: 2013-10-14T13:45:00-0500.576972931
+// @author alding2
 public class Geocache {
 	private double x;
 	private double y;

@@ -15,8 +15,8 @@ public class CallAStaticMethodTest extends TestCase {
 				+ "this line is not an email address\n"
 				+ "thisIsAnEmailAddress@address.edu\n" + "@NotAnEmailAddress";
 
-		String expected = ".........................spam@nospam.com\n"
-				+ "........thisIsAnEmailAddress@address.edu\n";
+		String expected = ".........................spam@nospam.com\n" //40
+				+ "........thisIsAnEmailAddress@address.edu\n";			// 40
 		CheckInputOutput.setInputCaptureOutput(input);
 		CallAStaticMethod.main(new String[] {});
 		int line = CheckInputOutput.checkCompleteOutput(expected);

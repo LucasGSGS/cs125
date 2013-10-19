@@ -12,8 +12,6 @@ public class GeocacheListTest extends TestCase {
 	public void testAddGetGeocacheGetSize() {
 		GeocacheList list = new GeocacheList();
 		assertEquals(0, list.getSize());
-		// There will be a compile error here until
-		// you've created the Geocache constructor
 		Geocache p = new Geocache(1, 2);
 		list.add(p);
 		assertEquals(1, list.getSize());
@@ -36,7 +34,7 @@ public class GeocacheListTest extends TestCase {
 		assertTrue(list.getGeocache(0) == p1);
 		assertTrue(list.getGeocache(1) == p2);
 		assertEquals(2, acopy.getSize());
-		assertTrue(acopy.getGeocache(0) == p1);
+		assertTrue(acopy.getGeocache(0) == p1);			// compare to testDeepCopy code
 		assertTrue(acopy.getGeocache(1) == p2);
 		// Following operations have no effect on the other list:
 		list.removeFromTop();
@@ -57,7 +55,7 @@ public class GeocacheListTest extends TestCase {
 		assertTrue(list.getGeocache(0) == p1);
 		assertTrue(list.getGeocache(1) == p2);
 		assertEquals(2, acopy.getSize());
-		assertTrue(acopy.getGeocache(0) != p1);
+		assertTrue(acopy.getGeocache(0) != p1);				// this and following line are different from testShallowCopy
 		assertTrue(acopy.getGeocache(1) != p2);
 		// The lists do not share geocache objects:
 		assertTrue(acopy.getGeocache(0).getX() == 10);
@@ -81,7 +79,7 @@ public class GeocacheListTest extends TestCase {
 		list.add(p2);
 		assertEquals(2, list.getSize());
 		assertTrue(list.getGeocache(1) == p2);
-		list.removeFromTop();
+		list.removeFromTop();				// removeFromTop called
 		assertEquals(1, list.getSize());
 		list.add(p3);
 		assertTrue(list.getGeocache(1) == p3);
