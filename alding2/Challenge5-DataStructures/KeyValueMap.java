@@ -32,11 +32,10 @@ public class KeyValueMap { // aka Dictionary or Map
 	 * Returns particular Color object previously added to this map.
 	 */
 	public Color find(String key) {
-		int found = 0;
 		for (int i = 0; i < strSize; i++) {
-			if (key.equals(str[i])) found = i;
+			if (key.equals(str[i])) return color[i];
 		}
-		return color[found];
+		return null;
 	}
 
 	/**
@@ -53,7 +52,19 @@ public class KeyValueMap { // aka Dictionary or Map
 	 * Removes the key (and the color) from this map.
 	 */
 	public void remove(String key) {
-		
+		int found = 0;
+		for (int i = 0; i < strSize; i++) {
+			if (key.equals(str[i])) found = i;
+		}
+		strSize--;
+		String[] old = str;
+		str = new String[strSize];						
+		for (int i = 0; i < found; i++) {
+			str[i] = old[i];
+		}
+		for (int i = found+1; i < strSize; i++) {
+			str[i] = old[i];
+		} 		
 	}
 
 }
