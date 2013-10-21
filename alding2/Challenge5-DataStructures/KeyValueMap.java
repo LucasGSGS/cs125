@@ -4,24 +4,23 @@ import java.awt.Color;
 
 public class KeyValueMap { // aka Dictionary or Map
 	private String[] str = new String[0];
-	private int strSize = 0;
+	private int size = 0;
 	private Color[] color = new Color[0];
-	private int colorSize = 0;
 	/**
 	 * Adds a key and value. If the key already exists, it replaces the original
 	 * entry.
 	 */
 	public void add(String key, Color key2) {
-		strSize++;
+		size++;
 		String[] old = str;
-		str = new String[strSize];						
+		str = new String[size];						
 		str[0] = key;
 		for (int i = 1; i < str.length; i++) {
 			str[i] = old[i-1];
 		}
-		colorSize++;
+
 		Color[] old2 = color;
-		color = new Color[colorSize];						
+		color = new Color[size];						
 		color[0] = key2;
 		for (int i = 1; i < str.length; i++) {
 			color[i] = old2[i-1];
@@ -32,7 +31,7 @@ public class KeyValueMap { // aka Dictionary or Map
 	 * Returns particular Color object previously added to this map.
 	 */
 	public Color find(String key) {
-		for (int i = 0; i < strSize; i++) {
+		for (int i = 0; i < size; i++) {
 			if (key.equals(str[i])) return color[i];
 		}
 		return null;
@@ -42,7 +41,7 @@ public class KeyValueMap { // aka Dictionary or Map
 	 * Returns true if the key exists in this map.
 	 */
 	public boolean exists(String key) {
-		for (int i = 0; i < strSize; i++) {
+		for (int i = 0; i < size; i++) {
 			if (key.equals(str[i])) return true;
 		}
 		return false;
@@ -53,17 +52,17 @@ public class KeyValueMap { // aka Dictionary or Map
 	 */
 	public void remove(String key) {
 		int found = 0;
-		for (int i = 0; i < strSize; i++) {
+		for (int i = 0; i < size; i++) {
 			if (key.equals(str[i])) found = i;
 		}
-		strSize--;
+		size--;
 		String[] old = str;
-		str = new String[strSize];						
+		str = new String[size];						
 		for (int i = 0; i < found; i++) {
 			str[i] = old[i];
 		}
-		for (int i = found+1; i < strSize; i++) {
-			str[i] = old[i];
+		for (int i = found+1; i < size; i++) {
+			str[i-1] = old[i];
 		} 		
 	}
 
