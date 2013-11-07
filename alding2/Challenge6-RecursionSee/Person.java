@@ -81,8 +81,10 @@ public int countGrandChildren() // but not greatGrandChildren
 
 public int countMaxGenerations()
 {
-	//YOUR CODE HERE
-	throw new IllegalArgumentException("Not Yet Implemented");   
+	int oldest = 1;
+	if (child1 != null) oldest = Math.max(child1.countMaxGenerations() + 1, oldest);
+	if (child2 != null) oldest = Math.max(child2.countMaxGenerations() + 1, oldest);
+	return oldest;
 }
 
 public int countGender(char gen)
