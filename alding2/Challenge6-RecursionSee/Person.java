@@ -103,8 +103,7 @@ public int countGender(char gen)
 
 public Person search(String name, int maxGeneration)
 {
-	//YOUR CODE HERE
-	throw new IllegalArgumentException("Not Yet Implemented");
+	
 }
 
 } // end of class
