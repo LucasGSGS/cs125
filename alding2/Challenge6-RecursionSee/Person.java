@@ -1,6 +1,6 @@
 //UIUC CS125 FALL 2013 MP. File: Person.java, CS125 Project: Challenge6-RecursionSee, Version: 2013-11-05T16:03:10-0600.767323587
 /**
- * @author replace-with-your-netid-here
+ * @author alding2
  *
  */
 public class Person
@@ -60,8 +60,10 @@ public void print()
 
 public int count() // total person count including this object
 {
-	//YOUR CODE HERE
-	throw new IllegalArgumentException("Not Yet Implemented");
+	int count = 1;
+	if (child1 != null) count += child1.count();
+	if (child2 != null) count += child2.count();
+	return count;
 }
 public int countGrandChildren() // but not greatGrandChildren
 {
@@ -77,8 +79,15 @@ public int countMaxGenerations()
 
 public int countGender(char gen)
 {
-	//YOUR CODE HERE
-	throw new IllegalArgumentException("Not Yet Implemented");
+	int count = 0;
+	if (gender == gen) count++;
+	if (child1 != null) {
+		count += child1.countGender(gen);
+	} 
+	if (child2 != null) {
+		count += child2.countGender(gen);
+	}
+	return count;
 }
 
 
