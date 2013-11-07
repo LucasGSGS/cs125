@@ -59,19 +59,23 @@ public class LinkedList {
 	 * @return total number of letters in the words of the linked list
 	 */
 	public int getLetterCount() {
-		
+		if (next == null) return this.word.length();
+		else return this.word.length() + next.getLetterCount();
 		// returns the total number of letters. word1.length() +
 		// word2.length()+...
 		// "A" -> "CAT" -> null returns 1 + 3 = 4.
 	}
 
 	/**
-	 * Recursively searches for and the returns the longest word.
+	 * Recursively searches for and returns the longest word.
 	 * @return the longest word i.e. word.length() is maximal.
 	 */
 	public String getLongestWord() {
-		// recursive searches for the longest word
-		
+		String longest = word;
+		if (next == null) return longest;
+		String potentialLongest = next.getLongestWord();
+		if (potentialLongest.length() > longest.length()) longest = potentialLongest;
+		return longest;	
 	}
 
 	/** Converts linked list into a sentence (a single string representation).
@@ -91,7 +95,10 @@ public class LinkedList {
 	 * from earlier links. This partialResult is initially an empty string. 
 	 */
 	public String getReversedSentence(String partialResult) {
-		
+		String result;
+		if (next == null) { result = word + partialResult; }
+		else { result = " " + word + partialResult; }
+		return next.getReversedSentence(result) + ".";
 	}
 	
 	public LinkedList(String[] words) {
@@ -150,7 +157,14 @@ public class LinkedList {
 	}
 
 	public LinkedList insert(String string) {
-		
+		if (string.charAt(0) <= this.word.charAt(0))
+			return new LinkedList(string,this);
+		if (next == null) {
+			this.next = new LinkedList(string,null);
+			return this;
+		}
+		this.next = next.insert(string);
+		return this;
 	}
 
 }
