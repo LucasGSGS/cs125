@@ -67,8 +67,16 @@ public int count() // total person count including this object
 }
 public int countGrandChildren() // but not greatGrandChildren
 {
-	//YOUR CODE HERE
-	throw new IllegalArgumentException("Not Yet Implemented");
+	int count = 0;
+	if (child1 != null) {
+		if (child1.child1 != null) count += 1;
+		if (child1.child2 != null) count += 1;
+	} 
+	if (child2 != null) {
+		if (child2.child1 != null) count += 1;
+		if (child2.child2 != null) count += 1;
+	}
+	return count;
 }
 
 public int countMaxGenerations()
