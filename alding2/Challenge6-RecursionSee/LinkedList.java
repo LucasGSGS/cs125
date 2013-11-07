@@ -79,7 +79,7 @@ public class LinkedList {
 	* A period (".") is appended after the last word.
 	* The last link represents the last word in the sentence.*/
 	public String getSentence() {
-		if (next == null) return this.word + ".";
+		if (next == null) return word + ".";
 		else return word + " " + next.getSentence();
 	}
 	
@@ -94,11 +94,17 @@ public class LinkedList {
 		
 	}
 	
-
+	public LinkedList(String[] words) {
+		word = words[0];
+		for (int i = 1; i < words.length; i++) {
+			this.append(words[i]);
+		}
+	}
 	/** Creates a linked list of words from an array of strings.
 	 * Each string in the array is a word. */
 	public static LinkedList createLinkedList(String[] words) {
-		throw new IllegalArgumentException("Not Yet Implemented");
+		if(words.length == 0) return null;
+		return new LinkedList(words);
 		// Hint: This is a wrapper method. You'll need to create your
 		// own recursive method.
 		// Yes this is possible _without_ loops!
@@ -112,7 +118,9 @@ public class LinkedList {
 	 * @return true if the linked list contains the word (case sensivitive)
 	 */
 	public boolean contains(String word) {
-		
+		if (this.word.equals(word)) return true;
+		else if (next == null) return false; 
+		else return next.contains(word);
 	}
 
 	/** Recursively searches for the given word in the linked list.
@@ -123,8 +131,9 @@ public class LinkedList {
 	 * @return The link that contains the search word.
 	 */
 	public LinkedList find(String word) {
-		
-
+		if (this.word.equals(word)) return this;
+		if (!this.word.equals(word) && next == null) return null;
+		else return next.findLast(word);
 	}
 
 	/**
@@ -135,7 +144,9 @@ public class LinkedList {
 	 * @return the last LinkedList object that represents the given word, or null if it is not found.
 	 */
 	public LinkedList findLast(String word) {
-		
+		if (this.word.equals(word) && next == null) return this;
+		if (!this.word.equals(word) && next == null) return null;
+		else return next.findLast(word);
 	}
 
 	public LinkedList insert(String string) {
