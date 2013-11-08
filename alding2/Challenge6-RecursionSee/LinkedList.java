@@ -94,11 +94,9 @@ public class LinkedList {
 	 * (and vice versa). The partialResult is the partial string constructed
 	 * from earlier links. This partialResult is initially an empty string. 
 	 */
-	public String getReversedSentence(String partialResult) {
-		String result;
-		if (next == null) { result = word + partialResult; }
-		else { result = " " + word + partialResult; }
-		return next.getReversedSentence(result) + ".";
+	public String getReversedSentence(String input) {
+		if (next != null) { return next.getReversedSentence(" " + word + input); }
+		else return word + input + ".";		
 	}
 	
 	public LinkedList(String[] words) {
