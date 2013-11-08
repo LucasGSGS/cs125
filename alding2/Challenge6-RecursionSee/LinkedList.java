@@ -94,9 +94,9 @@ public class LinkedList {
 	 * (and vice versa). The partialResult is the partial string constructed
 	 * from earlier links. This partialResult is initially an empty string. 
 	 */
-	public String getReversedSentence(String input) {
-		if (next != null) { return next.getReversedSentence(" " + word + input); }
-		else return word + input + ".";		
+	public String getReversedSentence(String partialResult) {
+		if (next == null) return word + partialResult + ".";	
+		else { return next.getReversedSentence(" " + this.word + partialResult); }	
 	}
 	
 	public LinkedList(String[] words) {
@@ -135,10 +135,10 @@ public class LinkedList {
 	 * @param word the word to search for.
 	 * @return The link that contains the search word.
 	 */
-	public LinkedList find(String word) {
-		if (this.word.equals(word)) return this;
-		if (!this.word.equals(word) && next == null) return null;
-		else return next.findLast(word);
+	public LinkedList find(String input) {
+		if (word.equals(input)) return this;
+		if (next == null) return null;
+		return next.find(input);
 	}
 
 	/**
@@ -148,12 +148,13 @@ public class LinkedList {
 	 * @param word the word to search for.
 	 * @return the last LinkedList object that represents the given word, or null if it is not found.
 	 */
-	public LinkedList findLast(String word) {
-		if (this.word.equals(word) && next == null) return this;
-		if (!this.word.equals(word) && next == null) return null;
-		else return next.findLast(word);
+	LinkedList n;
+	public LinkedList findLast(String input) {
+		if (word.equals(input)) n = this;
+		if (next == null) return this;
+		return next.find(input);
 	}
-
+	
 	public LinkedList insert(String string) {
 		if (string.charAt(0) <= this.word.charAt(0))
 			return new LinkedList(string,this);
