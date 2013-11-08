@@ -79,6 +79,7 @@ public int countGrandChildren() // but not greatGrandChildren
 	return count;
 }
 
+
 public int countMaxGenerations()
 {
 	int oldest = 1;
@@ -100,10 +101,25 @@ public int countGender(char gen)
 	return count;
 }
 
-
-public Person search(String name, int maxGeneration)
+public Person search(String theName, int maxGen)
 {
-	
+	return search(theName, maxGen, 1);
+}
+
+Person result = null;
+public Person search(String theName, int maxGen, int generation)
+{
+	if (generation > maxGen) return null;
+	if (name.equals(theName)) result = this;
+	if (child1 != null) { 
+		generation++; 
+		result = child1.search(theName, maxGen, generation);
+	}
+	if (child2 != null) { 
+		generation++; 
+		result = child2.search(theName, maxGen, generation);
+	}
+	return result;
 }
 
 } // end of class
