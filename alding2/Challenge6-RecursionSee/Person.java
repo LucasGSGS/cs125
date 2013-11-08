@@ -103,23 +103,13 @@ public int countGender(char gen)
 
 public Person search(String theName, int maxGen)
 {
-	return search(theName, maxGen, 1);
-}
-
-Person result = null;
-public Person search(String theName, int maxGen, int generation)
-{
-	if (generation > maxGen) return null;
-	if (name.equals(theName)) result = this;
-	if (child1 != null) { 
-		generation++; 
-		result = child1.search(theName, maxGen, generation);
+	Person p = null;
+	if (name.equals(theName)) return this;
+	if (maxGen > 0) {
+		if (child1 != null) p = child1.search(theName, maxGen-1);
+		if (child2 != null && p == null) p = child2.search(theName, maxGen-1);
 	}
-	if (child2 != null) { 
-		generation++; 
-		result = child2.search(theName, maxGen, generation);
-	}
-	return result;
+	return p;
 }
 
 } // end of class
