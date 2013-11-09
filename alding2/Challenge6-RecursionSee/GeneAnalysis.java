@@ -14,7 +14,6 @@ public class GeneAnalysis
 		char[] g2 = gene2.toCharArray();
 		return score(g1,g2,g1.length-1,g2.length-1);
 		
-		//throw new IllegalArgumentException("Not Yet Implemented");
 		// Hint: Use toCharArray() to convert each string to a char array.
 		 // call your recursive implementation here with
 		// the genes as char arrays, starting at the end of each gene.
@@ -33,23 +32,15 @@ NB  0<=i < gene1.length
 You need to figure out the base case.
 	 * */
 	private static int score(char[] gene1, char[] gene2, int i, int j) {
-		int s1 = 0;
-		int s2 = 0;
-		int s3 = 0;
-		int s4 = 0;
-		int max12 = 0;
-		int max34 = 0;
+		int s1 = 0, s2 = 0, s3 = 0, s4 = 0, max12 = 0, max34 = 0;
 		if (i < 0 || j < 0) return 0;
-		if (gene1[i] == gene2[j]) return 1;
-		else {
-			s1 += score(gene1,gene2,i-1,j);
-			s2 += score(gene1,gene2,i,j-1);
-			s3 += score(gene1,gene2,i-1,j-1);
-			s4 += score(gene1,gene2,i-1,j-1) + 1;
-			max12 = Math.max(s1, s2);
-			max34 = Math.max(s3, s4);
-			return Math.max(max12,max34);
-		}
+		if (gene1[i]==gene2[j]) s4 += score(gene1,gene2,i-1,j-1) + 1;
+		s1 += score(gene1,gene2,i-1,j);
+		s2 += score(gene1,gene2,i,j-1);
+		s3 += score(gene1,gene2,i-1,j-1);
+		max12 = Math.max(s1, s2);
+		max34 = Math.max(s3, s4);
+		return Math.max(max12,max34);
 	}
 //	define a private recursive Class method 'score' that 
 //	returns an integer the score.
