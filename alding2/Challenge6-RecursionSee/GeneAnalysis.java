@@ -37,8 +37,8 @@ You need to figure out the base case.
 		int s2 = 0;
 		int s3 = 0;
 		int s4 = 0;
-		int s12 = 0;
-		int s34 = 0;
+		int max12 = 0;
+		int max34 = 0;
 		if (i < 0 || j < 0) return 0;
 		if (gene1[i] == gene2[j]) return 1;
 		else {
@@ -46,9 +46,9 @@ You need to figure out the base case.
 			s2 += score(gene1,gene2,i,j-1);
 			s3 += score(gene1,gene2,i-1,j-1);
 			s4 += score(gene1,gene2,i-1,j-1) + 1;
-			s12 = Math.max(s1, s2);
-			s34 = Math.max(s3, s4);
-			return Math.max(s12,s34);
+			max12 = Math.max(s1, s2);
+			max34 = Math.max(s3, s4);
+			return Math.max(max12,max34);
 		}
 	}
 //	define a private recursive Class method 'score' that 
