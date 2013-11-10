@@ -27,7 +27,7 @@ public class BlackBeltDebuggerChallenge {
 	 */
 	public static char getTrial1Secret() {
 		// Warning - the value you need here is specific to you
-		return 'z';
+		return 120;
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class BlackBeltDebuggerChallenge {
 	 */
 	public static char getTrial2Secret() {
 		// Warning - the value you need here is specific to you
-		return 'h';
+		return 71;
 	}
 
 	/**
