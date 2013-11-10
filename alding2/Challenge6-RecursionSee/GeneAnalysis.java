@@ -34,7 +34,7 @@ You need to figure out the base case.
 	private static int score(char[] gene1, char[] gene2, int i, int j) {
 		int s1 = 0, s2 = 0, s3 = 0, s4 = 0, max12 = 0, max34 = 0;
 		if (i < 0 || j < 0) return 0;
-		if (gene1[i]==gene2[j]) s4 += score(gene1,gene2,i-1,j-1) + 1;
+		if (gene1[i] == gene2[j]) s4 += score(gene1,gene2,i-1,j-1) + 1;
 		s1 += score(gene1,gene2,i-1,j);
 		s2 += score(gene1,gene2,i,j-1);
 		s3 += score(gene1,gene2,i-1,j-1);
