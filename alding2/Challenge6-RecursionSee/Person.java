@@ -65,16 +65,18 @@ public int count() // total person count including this object
 	if (child2 != null) count += child2.count();
 	return count;
 }
-public int countGrandChildren() // but not greatGrandChildren
+
+public int countGrandChildren() {
+	return countGrandChildren(2);
+}
+
+public int countGrandChildren(int maxGens) // but not greatGrandChildren
 {
 	int count = 0;
-	if (child1 != null) {
-		if (child1.child1 != null) count += 1;
-		if (child1.child2 != null) count += 1;
-	} 
-	if (child2 != null) {
-		if (child2.child1 != null) count += 1;
-		if (child2.child2 != null) count += 1;
+	if (maxGens == 0) return 1;
+	if (maxGens > 0) {
+		if (child1 != null) count += child1.countGrandChildren(maxGens-1);
+		if (child2 != null) count += child2.countGrandChildren(maxGens-1);
 	}
 	return count;
 }
