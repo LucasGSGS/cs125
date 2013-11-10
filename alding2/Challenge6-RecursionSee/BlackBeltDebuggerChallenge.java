@@ -48,6 +48,6 @@ public class BlackBeltDebuggerChallenge {
 	 * @return the secret character
 	 */
 	public static char getTrial3Secret() {
-		return 'a';
+		return 9;
 	}
 }
