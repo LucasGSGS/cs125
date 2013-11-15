@@ -12,6 +12,10 @@ public class BinarySearch {
 	 * and proceed accordingly.
 	 */
 	static boolean search(int[] array, int key, int lo, int hi) {
-	return false;
+	int mid = (lo+hi)/2;
+	if (lo > hi) return false;
+	if (array[mid] == key) return true;
+	if (key < array[mid]) return search(array,key,lo,mid-1);
+	else return search(array,key,mid+1,hi);
 	}
 }
