@@ -1,4 +1,5 @@
 //UIUC CS125 FALL 2013 MP. File: InsecurePasswordLock.java, CS125 Project: Challenge7-RecursiveKnight, Version: 2013-11-12T09:02:55-0600.414969527
+// @author alding2
 /**
  * An insecure password lock. You do not need to modify this file
  * 
