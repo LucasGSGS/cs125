@@ -5,7 +5,9 @@ public class MazeRunner {
 	private int x, y;
 
 	/** Initializes the MazeRunner with the x,y values */
-	public MazeRunner(int x, int y) {	
+	public MazeRunner(int _x, int _y) {	
+		x = _x;
+		y = _y;
 	}
 
 	public int getX() {
@@ -22,13 +24,17 @@ public class MazeRunner {
 	 * character values other than N,S,E or W are ignored.
 	 */
 	void moveOne(char dir) {
-//		 TODO: Implement moveOne
+		if (dir == 'N') y++;
+		if (dir == 'S') y--;
+		if (dir == 'E') x++;
+		if (dir == 'W') x--;
 	}
 	/** Returns true if this maze runner is on the same (x,y) square
 	 * as the parameter. Assumes that the parameter is non-null.
 	 */
 	public boolean caught(MazeRunner other) {
-		return false; // TODO: Implement caught
+		if (x == other.x && y == other.y) return true;
+		return false;
 	}
 
 	/**
@@ -40,7 +46,10 @@ public class MazeRunner {
 	 * Invoke recursion to test the remaining paths (lo +1)
 	 */
 	static int findShortestString(String[] paths, int lo, int hi) {
-		return -1; // TODO: findShortestString
+		if (lo == hi) return lo;
+		int result = findShortestString(paths, lo + 1, hi);
+		if (safeStringLength(paths[result]) < safeStringLength(paths[lo])) return result;
+		return lo;
 	}
 
 	/** Returns the length of the string or Integer.MAX_VALUE
@@ -49,7 +58,8 @@ public class MazeRunner {
 	 * @return
 	 */
 	static int safeStringLength(String s) {
-		return -1;//TODO: safeStringLength
+		if (s == null) return Integer.MAX_VALUE;
+		return s.length();
 	}
 
 
@@ -68,7 +78,7 @@ public class MazeRunner {
 	 * 1. Set the current position to blocked (so that the recursive method does not
 	 * attempt to re-use this square again)
 	 * 2. Collect all paths from the NSEW neighbors
-	 * 3. Reset the current blocked position to false.
+	 * 3. Reset the current blocked position to false (unblock it).
 	 * 4. Use findShortestString to determine the shortest path
 	 * 5. If its non-null then PREPEND the compass direction of that neighbor's path.
 	 * e.g. if the Northern neighbor returned "EWWS" 
@@ -76,18 +86,25 @@ public class MazeRunner {
 	 * then return "N" + "EWWS"
 	 * Otherwise, just return null as none of the neighbors found a path.
 	 */
-	public static String shortestPath(int x, int y, int tX, int tY,
-			boolean blocked[][]) {
-		// TODO: BASE CASES HERE
-		blocked[x][y] = true;
-		//String[] paths = { 
-			//TODO: COLLECT RECURSIVE RESULTS HERE
-		//};
-		blocked[x][y] = false;
-
-		// TODO: Use findShortestString on paths
-		// TODO: Return correct string with Compass direction prepended (or null)
-		return "run away!";
+	public static String shortestPath(int x, int y, int tX, int tY,	boolean blocked[][]) {
+		if (x < 0 || y < 0 || x >= blocked.length || y >= blocked[0].length) return null;
+		if (blocked[x][y] == true) return null;
+		if (x == tX && y == tY) return "";		//don't need to go in any direction if already there
+		blocked[x][y] = true;	/*Set the current position to blocked (so that the recursive method does not
+		attempt to re-use this square again)*/
+		String goNorth = shortestPath(x,y+1,tX,tY,blocked);
+		String goEast = shortestPath(x+1,y,tX,tY,blocked);
+		String goSouth = shortestPath(x,y-1,tX,tY,blocked);
+		String goWest = shortestPath(x-1,y,tX,tY,blocked);	
+		if (goNorth != null) goNorth = "N" + goNorth;
+		if (goEast != null) goEast = "E" + goEast;
+		if (goSouth != null) goSouth = "S" + goSouth;
+		if (goWest != null) goWest = "W" + goWest;
+		blocked[x][y] = false;		
+		if (goNorth == null && goEast == null && goSouth == null && goWest == null) return null;
+		String[] paths = { goNorth,goEast,goSouth,goWest };
+		int a = findShortestString(paths, 0, 3);
+		return paths[a];
 	}
 
 	/** Moves the runner towards the target position, if the
@@ -96,9 +113,9 @@ public class MazeRunner {
 	 * if result is not null then send the first char to moveOne()
 	 * Hint: watch out for the empty string when target = current position...
 	 */
-	public void chase(boolean maze[][], int targetX, int targetY) {
-		// TODO: Implement chase
-		// Use shortestPath, string.charAt,  moveOne
+	public void chase(boolean maze[][], int tX, int tY) {
+		String result = shortestPath(x,y,tX,tY, maze);
+		if (result != null && result != "") moveOne(result.charAt(0));
 	}
 
 }
