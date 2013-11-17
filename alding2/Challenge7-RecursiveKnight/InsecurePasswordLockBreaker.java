@@ -9,7 +9,7 @@ public class InsecurePasswordLockBreaker {
 		}
 		char[] retval = new char[length];
 		for (int i = 0; i < length; i++) {
-			for (int j = 0; lock.open(retval) != i + 1; j++) {	//letter after current letter is wrong
+			for (int j = 0; lock.open(retval) != i + 1; j++) {	//terminating condition: next letter is wrong,
 				retval[i] = (char)j;							//which implies current letter is right
 			}
 		}
