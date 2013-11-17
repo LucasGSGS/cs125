@@ -1,7 +1,20 @@
 //UIUC CS125 FALL 2013 MP. File: RecursiveKnight.java, CS125 Project: Challenge7-RecursiveKnight, Version: 2013-11-12T09:02:55-0600.414969527
 // @author alding2
 public class RecursiveKnight {
-
+	public static void explore(boolean[][] visited, int x, int y, int[][] steps, int step) {
+		if (x < 0 || x >= visited.length || y < 0 || y >= visited[0].length) return;
+		if (visited[x][y] == true && step > 0) return;
+		if (steps[x][y] > 0 && steps[x][y] < step) return;
+		steps[x][y] = step;
+		explore(visited,x+1,y+2,steps,step+1);
+		explore(visited,x-1,y+2,steps,step+1);
+		explore(visited,x+1,y-2,steps,step+1);
+		explore(visited,x-1,y-2,steps,step+1);		
+		explore(visited,x+2,y+1,steps,step+1);
+		explore(visited,x-2,y+1,steps,step+1);
+		explore(visited,x+2,y-1,steps,step+1);
+		explore(visited,x-2,y-1,steps,step+1);
+		}
 	/**
 	 * This method recursively determines which 
 	 * board positions the knight can reach in the
@@ -28,7 +41,5 @@ public class RecursiveKnight {
 	 * The 'visited' array is unchanged by this method:.
 	 * Assume visited and steps are already initialized to a square array and are the same size.
 	 */
-	public static void explore(boolean[][] visited, int x, int y, int[][] steps, int step) {
-	//Todo: Implement RecursiveKnight.explore
-		throw new RuntimeException("Not yet Implemented!"); // you can remove this line!
-}	}
+	
+}

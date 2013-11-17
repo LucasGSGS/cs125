@@ -41,11 +41,15 @@ What should be printed _after_ the recursion call completes again?
 
  
 There are several java classes in this MP that need to be completed:
-	BinarySearch, GridCounting, RobotLink (DONE),
+	BinarySearch (DONE)
+	GridCounting (DONE)
+	RobotLink (DONE),
 	InsecureCombinationLockBreaker (*),
-	InsecurePasswordLockBreaker, 
-	MolecularSort, MazeRunner, RecursiveKnight, 
-	SelectionSort.
+	InsecurePasswordLockBreaker, (DONE)
+	MolecularSort, (DONE)
+	MazeRunner, (DONE)
+	RecursiveKnight, 
+	SelectionSort(DONE).
 	You can test your implementation of each using the unit tests and also run the
 	applets.
 	
