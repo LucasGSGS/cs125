@@ -72,9 +72,10 @@ public class LinkedList {
 	 */
 	public String getLongestWord() {
 		String longest = word;
-		if (next == null) return longest;
-		String potentialLongest = next.getLongestWord();
-		if (potentialLongest.length() > longest.length()) longest = potentialLongest;
+		if (next != null) {
+			String potentialLongest = next.getLongestWord();
+			if (potentialLongest.length() > longest.length()) longest = potentialLongest;
+		}
 		return longest;	
 	}
 
