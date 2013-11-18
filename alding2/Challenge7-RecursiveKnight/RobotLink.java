@@ -74,15 +74,11 @@ public class RobotLink {
 	 * if there are not robots that are flying and unhappy.
 	 * @return
 	 */
-	static Robot result = null;
-	public Robot getLastFlyingUnhappyRobot() {		
-		if (robot.isFlying() && !robot.isHappy()) { result = robot; }
-		if (next == null) {
-			Robot temp = result;
-			result = null;
-			return temp;
-		}
-		return next.getLastFlyingUnhappyRobot();
+	public Robot getLastFlyingUnhappyRobot() {	
+		Robot ref = null;
+		if (next != null) ref = next.getLastFlyingUnhappyRobot();
+		if (ref == null && robot.isFlying() && !robot.isHappy()) { return robot; }
+		return ref;
 	}
 	/**
 	 * Returns a reference to the happy most distant explorer.
